@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   View,
   Text,
@@ -7,7 +7,7 @@ import {
   Image,
   ScrollView,
   FlatList,
-} from "react-native";
+} from 'react-native';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -18,9 +18,9 @@ import Animated, {
   useAnimatedReaction,
   interpolate,
   Extrapolation,
-} from "react-native-reanimated";
-import { mvs, s } from "react-native-size-matters/extend";
-import { metrics } from "@constants/metrics";
+} from 'react-native-reanimated';
+import {mvs, s} from 'react-native-size-matters/extend';
+import {metrics} from '@constants/metrics';
 import {
   BACK_BUTTON_HEIGHT,
   CARD_HEADER_HEIGHT,
@@ -29,9 +29,9 @@ import {
   CARD_IMAGE_HEIGTH,
   CARD_MARGIN,
   SPRING_CONFIG,
-} from "../assets/config";
-import { theme } from "../assets/theme";
-import { CardProps } from "../assets/types";
+} from '../assets/config';
+import {theme} from '../assets/theme';
+import {CardProps} from '../assets/types';
 
 const Card = ({
   item,
@@ -66,7 +66,7 @@ const Card = ({
             Extrapolation.CLAMP,
           ),
         },
-        { translateY: transY.value },
+        {translateY: transY.value},
         {
           scale: scale.value,
         },
@@ -141,7 +141,7 @@ const Card = ({
           },
           animatedStyle,
         ]}>
-        <Image resizeMode="stretch" source={item.image} style={styles.image} />
+        <Image resizeMode="contain" source={item.image} style={styles.image} />
         <View style={styles.borderOverlay} />
       </Animated.View>
     </TouchableWithoutFeedback>
@@ -151,9 +151,9 @@ const Card = ({
 const styles = StyleSheet.create({
   cardContainer: {
     borderRadius: 12,
-    position: "absolute",
-    width: "100%",
-    overflow: "hidden",
+    position: 'absolute',
+    width: '100%',
+    overflow: 'hidden',
   },
   cardSubContainer: {
     paddingHorizontal: s(16),
@@ -162,26 +162,26 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: mvs(18),
-    fontWeight: "bold",
+    fontWeight: 'bold',
     color: theme.colors.white,
   },
   headerContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
     paddingHorizontal: s(16),
     height: CARD_HEADER_HEIGHT,
   },
   headerSubcontainer: {
-    alignItems: "center",
+    alignItems: 'center',
   },
-  fieldSpacer: { marginTop: s(32) },
-  stContainer: { flexDirection: "row", justifyContent: "space-between" },
+  fieldSpacer: {marginTop: s(32)},
+  stContainer: {flexDirection: 'row', justifyContent: 'space-between'},
   fieldLabel: {
     fontSize: mvs(11),
-    fontWeight: "600",
+    fontWeight: '600',
     color: theme.colors.white,
-    textTransform: "uppercase",
+    textTransform: 'uppercase',
   },
   fieldValue: {
     fontSize: mvs(21),
@@ -189,18 +189,18 @@ const styles = StyleSheet.create({
   },
   image: {
     height: 250,
-    width: "100%",
+    width: '100%',
   },
   qrContainer: {
-    alignSelf: "center",
+    alignSelf: 'center',
     padding: s(8),
     backgroundColor: theme.colors.white,
     borderRadius: s(6),
   },
-  qr: { width: s(140), height: s(140) },
+  qr: {width: s(140), height: s(140)},
   borderOverlay: {
     ...StyleSheet.absoluteFillObject,
-    position: "absolute",
+    position: 'absolute',
     borderRadius: 12,
     borderColor: theme.colors.border,
   },

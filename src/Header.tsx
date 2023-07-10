@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
   headingText: {
     fontSize: 25,
     fontWeight: 'bold',
+    color: 'white',
   },
   actionBlock: {
     flexDirection: 'row',
