@@ -1,7 +1,7 @@
-import { withDelay, withSpring, withTiming } from "react-native-reanimated";
-import { Gesture, GestureDetector } from "react-native-gesture-handler";
-import { CLOSE_THRESHOLD, SPRING_CONFIG } from "../assets/config";
-import { SwipeGestureProps } from "../assets/types";
+import {withDelay, withSpring, withTiming} from 'react-native-reanimated';
+import {Gesture, GestureDetector} from 'react-native-gesture-handler';
+import {CLOSE_THRESHOLD, SPRING_CONFIG} from '../assets/config';
+import {SwipeGestureProps} from '../assets/types';
 
 const SwipeGesture = ({
   children,
@@ -31,8 +31,9 @@ const SwipeGesture = ({
         }
       }
     })
+
     .onTouchesUp(() => {
-      inTransition.value = withDelay(100, withTiming(0, { duration: 0 }));
+      inTransition.value = withDelay(100, withTiming(0, {duration: 0}));
     })
     .onEnd(e => {
       if (!inTransition.value && e.translationY <= CLOSE_THRESHOLD) {

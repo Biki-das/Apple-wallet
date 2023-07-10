@@ -1,12 +1,10 @@
 import React from 'react';
 import {
   View,
-  Text,
   StyleSheet,
   TouchableWithoutFeedback,
   Image,
-  ScrollView,
-  FlatList,
+  Text,
 } from 'react-native';
 import Animated, {
   useSharedValue,
@@ -26,7 +24,7 @@ import {
   CARD_HEADER_HEIGHT,
   CARD_HEIGHT_CLOSED,
   CARD_HEIGHT_OPEN,
-  CARD_IMAGE_HEIGTH,
+  CARD_IMAGE_HEIGHT,
   CARD_MARGIN,
   SPRING_CONFIG,
 } from '../assets/config';
@@ -67,9 +65,7 @@ const Card = ({
           ),
         },
         {translateY: transY.value},
-        {
-          scale: scale.value,
-        },
+        {scale: scale.value},
       ],
     };
   });
@@ -142,7 +138,18 @@ const Card = ({
           animatedStyle,
         ]}>
         <Image resizeMode="contain" source={item.image} style={styles.image} />
-        <View style={styles.borderOverlay} />
+        <Text style={styles.transactionText}>Latest Transactions</Text>
+        <View>
+          {item.transactions.map(transaction => {
+            return (
+              <View
+                style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                <Text style={{color: 'white'}}>{transaction.recipent}</Text>
+                <Text style={{color: 'white'}}>{transaction.amount}</Text>
+              </View>
+            );
+          })}
+        </View>
       </Animated.View>
     </TouchableWithoutFeedback>
   );
@@ -158,7 +165,7 @@ const styles = StyleSheet.create({
   cardSubContainer: {
     paddingHorizontal: s(16),
     paddingBottom: s(16),
-    minHeight: CARD_HEIGHT_OPEN - CARD_HEADER_HEIGHT - CARD_IMAGE_HEIGTH,
+    minHeight: CARD_HEIGHT_OPEN - CARD_HEADER_HEIGHT - CARD_IMAGE_HEIGHT,
   },
   title: {
     fontSize: mvs(18),
@@ -172,21 +179,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: s(16),
     height: CARD_HEADER_HEIGHT,
   },
-  headerSubcontainer: {
-    alignItems: 'center',
-  },
-  fieldSpacer: {marginTop: s(32)},
-  stContainer: {flexDirection: 'row', justifyContent: 'space-between'},
-  fieldLabel: {
-    fontSize: mvs(11),
-    fontWeight: '600',
-    color: theme.colors.white,
-    textTransform: 'uppercase',
-  },
-  fieldValue: {
-    fontSize: mvs(21),
-    color: theme.colors.white,
-  },
   image: {
     height: 250,
     width: '100%',
@@ -197,12 +189,11 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.white,
     borderRadius: s(6),
   },
-  qr: {width: s(140), height: s(140)},
-  borderOverlay: {
-    ...StyleSheet.absoluteFillObject,
-    position: 'absolute',
-    borderRadius: 12,
-    borderColor: theme.colors.border,
+
+  transactionText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: 'white',
   },
 });
 

@@ -1,4 +1,4 @@
-import { SharedValue } from "react-native-reanimated";
+import {SharedValue} from 'react-native-reanimated';
 
 type Field = {
   label: string;
@@ -6,13 +6,8 @@ type Field = {
 };
 
 export type CardContentProps = {
-  title: string;
-  headerField: Field;
-  auxiliaryField: Field;
-  secondaryField: Field;
-  tertiaryField: Field;
+  transactions: [];
   image: any;
-  bg: string;
 };
 
 export type CardProps = {
