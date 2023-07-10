@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {Wallet} from './src/Wallet';
+import {Header} from './src/Header';
 import Applewallet from './src/apple-wallet-screen/AppleWalletScreen';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
@@ -9,7 +9,7 @@ const App = () => {
   return (
     <SafeAreaProvider>
       <GestureHandlerRootView style={styles.appView}>
-        <Wallet />
+        <Header />
         <Applewallet />
       </GestureHandlerRootView>
     </SafeAreaProvider>
